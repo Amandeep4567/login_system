@@ -1,17 +1,16 @@
-import { ForgotPassword, Login } from "./components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Login, ForgotPassword } from "./components";
 
-function App() {
+const App = () => {
   return (
-    <div className="">
-      <Login />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

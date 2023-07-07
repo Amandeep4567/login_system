@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const forgotPassword = () => {
-    navigate("/forgot-password");
+  const handleLogin = () => {
+    console.log("Logged in with:", email, password);
+    navigate("/dashboard");
   };
 
   return (
-    <div>
-      <h1>Log In</h1>
-      <form>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input required type="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input required type="password" />
-          <p>
-            <button onClick={forgotPassword}>Forgot Password</button>
-          </p>
-        </div>
-        <button>Login</button>
-      </form>
+    <div className="container">
+      <h2>Login</h2>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button onClick={handleLogin}>Login</button>
+      <p>
+        Forgot your password? <Link to="/forgot-password">Reset Password</Link>
+      </p>
     </div>
   );
 };
